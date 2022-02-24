@@ -1,4 +1,6 @@
-package main;
+package main.dao;
+
+import main.model.Currency;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

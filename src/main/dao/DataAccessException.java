@@ -1,4 +1,4 @@
-package main;
+package main.dao;
 
 public class DataAccessException extends Exception {
     private String message; 

@@ -1,7 +1,11 @@
 package test;
 
-import java.sql.Connection; 
-import main.*;
+import java.sql.Connection;
+
+import main.dao.CurrencyDAO;
+import main.dao.DataAccessException;
+import main.dao.Database;
+import main.model.Currency;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,8 +13,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CurrencyDAOTest {
-    private Database db; 
-    private Currency unitedStatesCur; 
+    private Database db;
+    private Currency unitedStatesCur;
     private Currency philippinesCur;
 
     /**
