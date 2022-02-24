@@ -31,7 +31,7 @@ public class CurrencyDAO {
     /**
      * Creates a new currency in the database. 
      * 
-     * @param currency the Currency object to be added.
+     * @param newCurrency the Currency object to be added.
      * @throws DataAccessException
      */
     public void createCurrency(Currency newCurrency) throws DataAccessException {
@@ -65,7 +65,7 @@ public class CurrencyDAO {
     }
 
     /**
-     * Reads the current exchange rate of a given currency.
+     * Reads the current exchange rate of a given currency, stores in a Currency object.
      * 
      * @param currencyCode the currency code for the currency to be retrieved.
      * @return a Currency object representing the currency retrieved from the 
@@ -89,11 +89,12 @@ public class CurrencyDAO {
             throw new DataAccessException("Error found while getting the current " +
                                           "exchange rate of a currency from the database"); 
         } finally {
-            /*  I'm not sure if this is possible, since currency_code is our primary key
-                and SQL doesn't allow duplicate primary keys, but just in case...     */ 
             if (resultSet != null) {
-                throw new DataAccessException("Error: Duplicate currency codes in database " +
-                                              "have been discovered."); 
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
