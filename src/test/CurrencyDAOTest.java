@@ -38,7 +38,8 @@ public class CurrencyDAOTest {
             Connection conn = db.openConnection(); 
             CurrencyDAO cDao = new CurrencyDAO(conn); 
             cDao.createCurrency(unitedStatesCur);
-            testResult = cDao.readExchangeRate(unitedStatesCur.getCurrencyCode()); 
+            testResult = cDao.readExchangeRate(unitedStatesCur.getCurrencyCode());
+            db.closeConnection(true);
         } catch (DataAccessException e) {
             e.printStackTrace();
             db.closeConnection(false);
