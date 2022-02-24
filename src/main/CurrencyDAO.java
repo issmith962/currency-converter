@@ -72,7 +72,7 @@ public class CurrencyDAO {
      *         database, or null if currency is not found. 
      * @throws DataAccessException
      */
-    public Currency readExchangeRate(String currencyCode) throws DataAccessException {
+    public Currency readCurrency(String currencyCode) throws DataAccessException {
         ResultSet resultSet = null; 
         Currency resultCurrency = null; 
         String sql = "SELECT exchange_rate FROM currency WHERE currency_code = ?"; 
