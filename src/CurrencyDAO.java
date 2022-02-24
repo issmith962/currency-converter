@@ -29,7 +29,7 @@ public class CurrencyDAO {
     /**
      * Creates a new currency in the database. 
      * 
-     * @param currency The Currency object to be added.
+     * @param currency the Currency object to be added.
      * @throws DataAccessException
      */
     public void createCurrency(Currency newCurrency) throws DataAccessException {
@@ -48,7 +48,7 @@ public class CurrencyDAO {
     /**
      * Deletes a given currency from the database. 
      * 
-     * @param currency The Currency object to be deleted.
+     * @param currency the Currency object to be deleted.
      */
     public void deleteCurrency(Currency currency) throws DataAccessException {
         String sql = "DELETE FROM currency WHERE currency_code = ?"; 
@@ -65,8 +65,8 @@ public class CurrencyDAO {
     /**
      * Reads the current exchange rate of a given currency.
      * 
-     * @param currencyCode The currency code for the currency to be retrieved.
-     * @return A Currency object representing the currency retrieved from the 
+     * @param currencyCode the currency code for the currency to be retrieved.
+     * @return a Currency object representing the currency retrieved from the 
      *         database, or null if currency is not found. 
      * @throws DataAccessException
      */
@@ -99,8 +99,8 @@ public class CurrencyDAO {
     /**
      * Updates the current exchange rate of a currency in the database. 
      * 
-     * @param currencyCode The currency code for the currency to be updated.
-     * @param newExchangeRate The new exchange rate to replace the current rate in the database.
+     * @param currencyCode the currency code for the currency to be updated.
+     * @param newExchangeRate the new exchange rate to replace the current rate in the database.
      * @throws DataAccessException
      */
     public void updateExchangeRate(String currencyCode, double newExchangeRate) throws DataAccessException {
