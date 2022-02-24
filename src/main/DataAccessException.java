@@ -1,3 +1,5 @@
+package main;
+
 public class DataAccessException extends Exception {
     private String message; 
     
