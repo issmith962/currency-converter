@@ -1,16 +1,23 @@
 package test;
 
-import java.beans.Transient;
 import java.sql.Connection; 
 import main.*;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CurrencyDAOTest {
     private Database db; 
+    private Currency unitedStatesCur; 
+    private Currency phillipinesCur; 
 
     @BeforeEach
-    void setUp() throw Exception {
+    void setUp() throws Exception {
         db = new Database(); 
+        unitedStatesCur = new Currency("USD", 1.0); 
+        phillipinesCur = new Currency("PHP", 43.1232); 
         db.openConnection(); 
         db.createTables();
         db.closeConnection(true);
@@ -23,14 +30,20 @@ public class CurrencyDAOTest {
         db.closeConnection(true);
     }
 
-    @Test 
+    @Test
     void addNewCurrency() throws Exception {
-        String testResult = null;
+        Currency testResult = null;
 
         try {
             Connection conn = db.openConnection(); 
             CurrencyDAO cDao = new CurrencyDAO(conn); 
-            cDao.createCurrency();
+            cDao.createCurrency(unitedStatesCur);
+            testResult = cDao.readExchangeRate(unitedStatesCur.getCurrencyCode()); 
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+            db.closeConnection(false);
         }
+        assertNotNull(testResult);
+        assertEquals(unitedStatesCur, testResult);
     }
 }
