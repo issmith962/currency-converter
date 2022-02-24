@@ -47,6 +47,7 @@ public class CurrencyDAOTest {
     /**
      * Simple test for createCurrency() and readCurrency() methods in CurrencyDAO.java.
      * Creates two currencies, then reads them out to verify that they match the original.
+     *
      * @throws Exception
      */
     @Test

@@ -36,17 +36,20 @@ public class Database {
      * @throws DataAccessException
      */
     public void closeConnection(boolean commit) throws DataAccessException {
+        if (conn == null) {
+            return;
+        }
         try {
             if (commit) {
-                conn.commit(); 
+                conn.commit();
             } else {
-                conn.rollback(); 
+                conn.rollback();
             }
-            conn.close(); 
-            conn = null; 
+            conn.close();
+            conn = null;
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new DataAccessException("Unable to close database connection."); 
+            throw new DataAccessException("Unable to close database connection.");
         }
     }
 
